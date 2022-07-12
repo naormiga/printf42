@@ -6,13 +6,13 @@
 /*   By: nvilla-g <nvilla-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:55:46 by nvilla-g          #+#    #+#             */
-/*   Updated: 2022/07/11 18:00:17 by nvilla-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:07:10 by nvilla-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-char	*ft_divhexa(unsigned long long cociente, int len)
+/*char	*ft_divhexa(unsigned long long cociente, int len, int *we)
 {
 	char	*hexa;
 	int		residuo;
@@ -33,4 +33,4 @@ char	*ft_divhexa(unsigned long long cociente, int len)
 			len--;
 		}
 	return(hexa);
-}
+}*/

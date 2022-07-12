@@ -6,20 +6,20 @@
 /*   By: nvilla-g <nvilla-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:13:01 by nvilla-g          #+#    #+#             */
-/*   Updated: 2022/07/11 18:05:34 by nvilla-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:28:53 by nvilla-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putstr(char *str, int *we)
 {
 	int	c;
 
 	c = 0;
 	while (str[c] != '\0')
 	{
-		write(1, &str[c], 1);
+		ft_write(1, &str[c], 1, we);
 		c++;
 	}
 	return (0);

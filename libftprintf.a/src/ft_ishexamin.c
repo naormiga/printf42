@@ -6,29 +6,31 @@
 /*   By: nvilla-g <nvilla-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:52:56 by nvilla-g          #+#    #+#             */
-/*   Updated: 2022/07/11 17:06:57 by nvilla-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:50:32 by nvilla-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-int	ft_ishexamin(unsigned long long i)
+int	print_hexamin(unsigned int i, char *base, int *we)
 {
-	int	len;
-	int cociente;
-	int	len2;
-	char	*hexa;
+	int	tlen;
+	unsigned int	digit;
 
-	len = 0;
-	cociente = i;
-	while (i)
-	{
-		i  = i / 16;
-		len++;
-	}
-	len2 = len;
-	hexa = ft_divhexa(cociente, len);
-	hexa = ft_strtolower(hexa);
-	ft_putstr(hexa);
-	return (len2);
+	tlen = 0;
+	digit = (i % 16);
+	i = i / 16;
+	if (i != 0)
+		tlen += print_hexamin(i, "0123456789abcdef", we);
+	tlen += ft_write(1, &base[digit], 1, we);
+	return (tlen);
+}
+
+int	ft_ishexamin(unsigned int i, int *we)
+{
+	int tlen;
+
+	tlen = 0;
+	tlen += print_hexamin(i, "0123456789abcdef", we);
+	return (tlen);
 }

@@ -6,7 +6,7 @@
 /*   By: nvilla-g <nvilla-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:09:04 by nvilla-g          #+#    #+#             */
-/*   Updated: 2022/07/11 19:02:01 by nvilla-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 19:04:21 by nvilla-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/ft_printf.h"
@@ -17,49 +17,47 @@ int	ft_ischar(int ch, int *we)
 	return (1);
 }
 
-//ft_printf("hola que tal como estas usted %s", NULL);
-//hola que tal como estas uted (null);
-
-int	ft_isstring(char * s)
+int	ft_isstring(char * s, int *we)
 {
 	int	len;
 
 	len = 0;
-	if(!s){
-		len = write(1, "(null)", 6);
+	if(!s)
+	{
+		len = ft_write(1, "(null)", 6, we);
 		return(len);
 	}
-	ft_putstr(s);
+	ft_putstr(s, we);
 	len = ft_strlen(s);
 	return (len);
 	
 }
 
-int	ft_isint(int i)
+int	ft_isint(int i, int *we)
 {
 	char*	s;
 	int	len;
 
 	len = 0;
 	s = ft_itoa(i);
-	ft_putstr(s);
+	ft_putstr(s, we);
 	len = ft_strlen(s);
 	free(s);
 	return (len);
 }
 
-int	ft_isunsigned(unsigned int ch)
+/*int	ft_isunsigned(unsigned int ch, int *we)
 {
 	char*	s;
 	int	len;
 
 	len = 0;
 	s = ft_uitoa(ch);
-	ft_putstr(s);
+	ft_putstr(s, we);
 	len = ft_strlen(s);
 	free(s);
 	return (len);
-}
+}*/
 
 int	ft_type(va_list args, char ch, int *we)
 {
@@ -69,17 +67,17 @@ int	ft_type(va_list args, char ch, int *we)
 	if (ch == 'c')
 		len = ft_ischar(va_arg(args, int), we);
 	if (ch == 's')
-		len = ft_isstring(va_arg(args, char *));
+		len = ft_isstring(va_arg(args, char *), we);
 	if (ch == 'p')
 		len = ft_ispointer(va_arg(args, void *), we);
 	if (ch == 'i' || ch == 'd')
-		len = ft_isint(va_arg(args, int));
+		len = ft_isint(va_arg(args, int), we);
 	if (ch == 'u')
-		len = ft_isunsigned(va_arg(args, unsigned int));
+		len = ft_isunsigned(va_arg(args, unsigned int), we);
 	if (ch == 'x')
-		len = ft_ishexamin(va_arg(args, unsigned long long));
+		len = ft_ishexamin(va_arg(args, unsigned int), we);
 	if (ch == 'X')
-		len = ft_ishexamay(va_arg(args, unsigned long long));
+		len = ft_ishexamay(va_arg(args, unsigned int), we);
 	if (ch == '%')
 	{
 		len = ft_write(1, "%", 1, we);
@@ -141,16 +139,10 @@ int	ft_printf(char const * s, ...)
 	int s;
 	
 	s = 8546231;
-	real = printf("naomi es genial = %p\n", &s);
+	real = printf("naomi es genial = %X\n", s);
 	printf("resultdo real = %i\n", real);
-	mio = ft_printf("naomi es genial = %p\n", &s);
+	mio = ft_printf("naomi es genial = %X\n", s);
 	printf("resultado mio = %i\n", mio);
 
 	return (0);
-}
-*/
-
-
-
-
-
+}*/

@@ -6,7 +6,7 @@
 /*   By: nvilla-g <nvilla-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:04:34 by nvilla-g          #+#    #+#             */
-/*   Updated: 2022/07/11 19:02:04 by nvilla-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:14:32 by nvilla-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int print_hexa_pointer(unsigned long long i, char *base, int *we)
 int ft_ispointer(void *p, int *we)
 {
 	int tl;
-	//(void)we;
 	if(p == NULL)
 	{
 		tl = ft_write(1, "0x0", 3, we);

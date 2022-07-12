@@ -6,28 +6,33 @@
 /*   By: nvilla-g <nvilla-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:54:07 by nvilla-g          #+#    #+#             */
-/*   Updated: 2022/07/11 17:01:08 by nvilla-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 19:03:13 by nvilla-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-int	ft_ishexamay(unsigned long long i)
+int	print_hexamay(unsigned int i, char *base, int *we)
 {
-	int	len;
-	int cociente;
-	int	len2;
-	char	*hexa;
+	int	tlen;
+	int	digit;
 
-	len = 0;
-	cociente = i;
-	while (i)
-	{
-		i  = i / 16;
-		len++;
-	}
-	len2 = len;
-	hexa = ft_divhexa(cociente, len);
-	ft_putstr(hexa);
-	return (len2);
+	tlen = 0;
+	digit = (i % 16);
+	i = i / 16;
+	if (i != 0)
+		tlen += print_hexamay(i, "0123456789ABCDEF", we);
+	tlen += ft_write(1, &base[digit], 1, we);
+	return (tlen);
 }
+
+int	ft_ishexamay(unsigned int i, int *we)
+{
+	int tlen;
+
+	tlen = 0;
+	tlen += print_hexamay(i, "0123456789ABCDEF", we);
+	return (tlen);
+}
+
+
